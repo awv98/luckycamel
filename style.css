@@ -218,21 +218,31 @@ backdrop-filter:blur(.5px);
 
 .hero-title{
 
-position:absolute;
+animation:
 
-bottom:130px;
+appear 3s ease;
 
-font-size:4rem;
+}
 
-letter-spacing:12px;
+@keyframes appear{
 
-font-weight:100;
+from{
 
-color:white;
+opacity:0;
 
-text-shadow:
+transform:
 
-0 0 40px rgba(255,255,255,.2);
+translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
 
 }
 
