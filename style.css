@@ -65,38 +65,57 @@ scale(1.08);
 
 }
 
-/* ============================= */
-/* STARS */
-/* ============================= */
+body::before{
 
-#stars{
+content:"";
 
 position:fixed;
 
-inset:0;
+inset:-20%;
 
 pointer-events:none;
 
-overflow:hidden;
+background:
 
-z-index:-2;
+conic-gradient(
+
+from 0deg,
+
+transparent,
+
+rgba(255,255,255,.02),
+
+transparent,
+
+rgba(255,240,180,.02),
+
+transparent
+
+);
+
+filter:blur(120px);
+
+animation:rotateLight 40s linear infinite;
+
+z-index:-1;
 
 }
 
-.star{
+@keyframes rotateLight{
 
-position:absolute;
+from{
 
-width:2px;
-height:2px;
+transform:rotate(0deg);
 
-background:white;
+}
 
-border-radius:50%;
+to{
 
-opacity:.4;
+transform:rotate(360deg);
 
-animation:twinkle linear infinite;
+}
+
+}
 
 }
 
