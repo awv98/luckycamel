@@ -276,20 +276,21 @@ justify-content:center;
 
 .poem{
 
-max-width:1100px;
+.poem{
 
-font-size:.98rem;
+max-width:1200px;
 
-line-height:1.55;
+font-size:.95rem;
 
-white-space:pre-wrap;
+line-height:1.65;
 
-letter-spacing:.15px;
+letter-spacing:.4px;
 
-text-shadow:
+color:
 
-0 0 12px rgba(255,255,255,.04);
+rgba(255,255,255,.92);
 
+}
 }
 
 /* ============================= */
