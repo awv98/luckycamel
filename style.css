@@ -654,8 +654,42 @@ padding:60px 20px;
 
 .letter{
 
-padding:35px;
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.09),
+
+rgba(255,255,255,.03)
+
+);
+
+box-shadow:
+
+0 35px 120px rgba(0,0,0,.55),
+
+0 0 120px rgba(255,255,255,.03);
 
 }
+
+.seal{
+
+background:
+
+radial-gradient(
+
+circle,
+
+#b41e3f,
+
+#73122b
+
+);
+
+border:
+
+2px solid rgba(255,255,255,.12);
 
 }
