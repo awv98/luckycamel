@@ -1,476 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Para Ti</title>
+<title>Para ti.</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-
-font-family:"Times New Roman",serif;
-background:
-radial-gradient(circle at top,#600018 0%,#220008 45%,#090102 100%);
-color:white;
-overflow-x:hidden;
-line-height:1.9;
-
-}
-
-/* ---------------- Stars ---------------- */
-
-.stars{
-
-position:fixed;
-width:100%;
-height:100%;
-left:0;
-top:0;
-pointer-events:none;
-overflow:hidden;
-z-index:-2;
-
-}
-
-.star{
-
-position:absolute;
-width:2px;
-height:2px;
-background:white;
-border-radius:50%;
-animation:twinkle linear infinite;
-
-}
-
-@keyframes twinkle{
-
-0%{opacity:.2;transform:translateY(0px);}
-50%{opacity:1;}
-100%{opacity:.2;transform:translateY(-60px);}
-
-}
-
-/* ---------------- Crystal Glow ---------------- */
-
-.crystal{
-
-position:fixed;
-
-width:400px;
-height:400px;
-
-background:
-radial-gradient(circle,
-rgba(255,255,255,.09),
-transparent 70%);
-
-filter:blur(20px);
-
-mix-blend-mode:screen;
-
-pointer-events:none;
-
-z-index:-1;
-
-animation:float 16s ease-in-out infinite;
-
-}
-
-.crystal:nth-child(2){
-
-right:-100px;
-top:15%;
-
-}
-
-.crystal:nth-child(3){
-
-left:-100px;
-bottom:15%;
-
-animation-delay:5s;
-
-}
-
-@keyframes float{
-
-50%{
-transform:
-translateY(-40px)
-translateX(20px)
-rotate(8deg);
-}
-
-}
-
-/* ---------------- Hero ---------------- */
-
-.hero{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-padding:30px;
-
-text-align:center;
-
-}
-
-.photo{
-
-width:min(420px,90vw);
-
-aspect-ratio:1;
-
-border-radius:20px;
-
-overflow:hidden;
-
-border:2px solid rgba(255,255,255,.25);
-
-box-shadow:
-
-0 0 50px rgba(255,255,255,.12),
-
-0 0 100px rgba(255,0,60,.2);
-
-backdrop-filter:blur(10px);
-
-}
-
-.photo img{
-
-width:100%;
-height:100%;
-object-fit:cover;
-
-}
-
-.scroll{
-
-margin-top:35px;
-font-size:.9rem;
-opacity:.65;
-letter-spacing:4px;
-
-animation:bob 2s infinite;
-
-}
-
-@keyframes bob{
-
-50%{transform:translateY(10px);}
-
-}
-
-/* ---------------- Sections ---------------- */
-
-section{
-
-max-width:850px;
-
-margin:auto;
-
-padding:110px 30px;
-
-}
-
-/* ---------------- Poem ---------------- */
-
-.poem{
-
-font-size:1.25rem;
-white-space:pre-wrap;
-
-}
-
-/* ---------------- Spotify ---------------- */
-
-.spotify{
-
-display:flex;
-justify-content:center;
-
-}
-
-iframe{
-
-border-radius:18px;
-
-width:100%;
-
-height:380px;
-
-}
-
-/* ---------------- Cookie ---------------- */
-
-.cookie-section{
-
-text-align:center;
-
-}
-
-.cookie{
-
-font-size:120px;
-
-cursor:pointer;
-
-transition:.3s;
-
-user-select:none;
-
-}
-
-.cookie:hover{
-
-transform:scale(1.05);
-
-}
-
-.hidden{
-
-display:none;
-
-}
-
-input{
-
-margin-top:30px;
-
-padding:14px 20px;
-
-font-size:18px;
-
-font-family:inherit;
-
-background:#2f0710;
-
-border:1px solid rgba(255,255,255,.3);
-
-color:white;
-
-border-radius:10px;
-
-}
-
-button{
-
-padding:14px 28px;
-
-margin-top:25px;
-
-border:none;
-
-cursor:pointer;
-
-font-size:17px;
-
-background:#c4003d;
-
-color:white;
-
-border-radius:999px;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-background:#ef2b62;
-
-}
-
-#success{
-
-margin-top:30px;
-
-font-size:22px;
-
-}
-
-/* ---------------- Footer ---------------- */
-
-footer{
-
-padding:80px;
-
-text-align:center;
-
-opacity:.6;
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div class="stars" id="stars"></div>
+<div id="background"></div>
 
-<div class="crystal"></div>
-
-<div class="crystal"></div>
+<div id="stars"></div>
 
 <section class="hero">
 
-<div class="photo">
+    <img src="assets/photo.jpg" class="hero-image">
 
-<!-- Replace with her image -->
-
-<img src="photo.jpg">
-
-</div>
-
-<div class="scroll">
-
-SCROLL
-
-</div>
+    <div class="scroll">
+        ↓
+    </div>
 
 </section>
 
-<section>
+<section class="poem-section">
 
-<div class="poem">
+<article class="poem">
 
 Pongo mis labios sobre ti
-Cada trago que tomo te doy un beso
+Cada trago te doy un beso
 Lo que reflejas, me veo en ti
 Me intoxica el veneno que llevas dentro
 
 Como una musa
 No siempre te veo pero sé que estás
 En estado de claridad, atento
-Ahí es donde impactará
-Descuidado, intenté salir pero me quedé dentro
+Ahi es donde impactará
+Atrapado, intenté salir pero me quede dentro
 
-Tal vez intenté entrar pero me quedé fuera,
-Ya no lo recuerdo
+Tal vez intenté entrar pero me quede fuera,
+Algo que no retengo
 El impacto me llevó por delante como una tormenta
-Ciertos datos se perdieron, se me escaparon como el intangible momento
+Ciertos datos se perdieron, se me escaparon como el momento
 
-Presente, al igual transparente como misteriosa
-me ayudas a ver cuando mi visión es borrosa
-Y como una hermana mayor, altruista y generosa
-Invitas a la luz pero proteges del frío y el viento la casa
+Intangible, transparente y misteriosa
+Mejoras mi vista cuando es borrosa
+Hermana mayor, generosa y altruista
+Invitas a la luz, un brillo que conquista
 
-Porque tú proteges el hogar
-Aunque ojo, más vale no soltar
-Porque eres fuerte, te crearon en el fuego
+Eres fuerte, pues te crearon en el fuego
 Tu elemento, un calor ecuatorial
-Solidificada en el agua
-Elegante como un arquero
-Una belleza chocante como las olas del mar
-Tan libre como un viento mediterráneo
-Ahí es donde tomaste tu forma radial
+Sumergida y solidificada en el agua
+Un bautizo entre las olas del mar
 
-Pero eres delicada al mismo tiempo
+Libre como un viento mediterráneo
+Y delicada al mismo tiempo
 Capaz de romperte con un simple impacto
-un peso inesperado
 O con el canto de una nota alta de un soprano
 
-Ese elemento que tanto intimida
+Ese elemento que también intimida
 la piel de los rascacielos
 los gigantes también caen, como dos torres mellizas
-Una complejidad integral, cada detalle me invita
+Una complejidad cuyo detalle me invita
 como un candelabro o las ventanas de una mezquita
 
 Así que sí, eres fuerte y delicada
 Transparente y reflejante
-Como un cocodrilo en el agua, cambia tu forma
-Pero más que nada, eres brillante
-Como los ojos castaños debajo de las lentillas de un amante
-Nunca podría olvidar lo que sentí esa noche
-Pero te dejé caer, mi mano sangrante
-El cristal también corta aunque sea brillante
+Peligrosa en un instante
+Como un cocodrilo vigilante
 
-</div>
+Y como un diamante
+O los ojos castaños debajo de las lentillas de un amante
+Eres radiante
+Y te deje caer, aun sea por un solo instante
+Mi mano sangrante
+Porque el cristal corta aunque sea brillante
 
-</section>
-
-<section>
-
-<h2 style="text-align:center;margin-bottom:40px;">Una playlist.</h2>
-
-<div class="spotify">
-
-<!-- Replace playlist ID -->
-
-<iframe src="https://open.spotify.com/embed/playlist/PLAYLIST_ID"></iframe>
-
-</div>
+</article>
 
 </section>
 
-<section class="cookie-section">
+<section class="spotify">
 
-<h2 style="margin-bottom:50px;">
+<h2>
+
+Una playlist.
+
+</h2>
+
+<iframe
+style="border-radius:20px"
+src="https://open.spotify.com/embed/playlist/2hUKoidr4IVztchiKJl0nV"
+width="100%"
+height="380"
+frameborder="0"
+allowfullscreen=""
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+
+</section>
+
+<section class="fortune">
+
+<div class="letter" id="letter">
+
+<div class="seal"></div>
+
+<div class="closed">
+
+Abrir
+
+</div>
+
+<div class="inside">
+
+<h2>
 
 Fortune Cookie
 
 </h2>
 
-<div class="cookie" id="cookie">
-
-🥠
-
-</div>
-
-<div id="inside" class="hidden">
-
-<p style="margin-top:40px;font-size:22px;">
+<p>
 
 <b>Acertijo</b>
 
 <br><br>
 
-"Soy transparente, puedo romperme,
-reflejo el mundo y fui el protagonista de este poema.
+Soy transparente, puedo romperme,
+reflejo el mundo y fui el protagonista
+de este poema.
 
-¿Qué soy?"
+<br><br>
+
+¿Qué soy?
 
 </p>
 
 <input
 id="answer"
-placeholder="Tu respuesta...">
+placeholder="Tu respuesta">
 
-<br>
-
-<button onclick="check()">
+<button onclick="checkAnswer()">
 
 Responder
 
 </button>
 
-<div id="success"></div>
+<div id="result"></div>
+
+</div>
 
 </div>
 
@@ -478,90 +161,12 @@ Responder
 
 <footer>
 
-✨
+★
 
 </footer>
 
-<script>
-
-/* Stars */
-
-const container=document.getElementById("stars");
-
-for(let i=0;i<170;i++){
-
-const s=document.createElement("div");
-
-s.className="star";
-
-s.style.left=Math.random()*100+"%";
-
-s.style.top=Math.random()*100+"%";
-
-s.style.animationDuration=(4+Math.random()*10)+"s";
-
-s.style.animationDelay=Math.random()*5+"s";
-
-container.appendChild(s);
-
-}
-
-/* Cookie */
-
-const cookie=document.getElementById("cookie");
-
-cookie.onclick=()=>{
-
-cookie.textContent="🥠✨";
-
-document.getElementById("inside").classList.remove("hidden");
-
-}
-
-/* Riddle */
-
-function check(){
-
-const a=document
-.getElementById("answer")
-.value
-.trim()
-.toLowerCase();
-
-if(
-a==="cristal"||
-a==="glass"
-){
-
-document.getElementById("success").innerHTML=`
-
-<br>
-
-<a href="https://calendly.com/YOUR-LINK" target="_blank">
-
-<button>
-
-La respuesta correcta.
-
-Haz clic aquí.
-
-</button>
-
-</a>
-
-`;
-
-}
-
-else{
-
-alert("No exactamente.");
-
-}
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
+
 </html>
