@@ -1,168 +1,142 @@
-/* -----------------------------
-   PAGE FADE IN
-------------------------------*/
+/* ==========================================================
+   CINEMATIC WEBSITE
+========================================================== */
 
-document.body.style.opacity = "0";
+/* --------------------------
+   PAGE LOAD
+---------------------------*/
 
 window.addEventListener("load", () => {
 
-    document.body.style.transition = "opacity 2s ease";
-
-    document.body.style.opacity = "1";
+    document.body.classList.add("loaded");
 
 });
 
 
-/* -----------------------------
+/* --------------------------
    STARFIELD
-------------------------------*/
+---------------------------*/
 
-const starContainer = document.getElementById("stars");
+const stars = document.getElementById("stars");
 
-for(let i=0;i<140;i++){
+for (let i = 0; i < 90; i++) {
 
-    const star=document.createElement("div");
+    const star = document.createElement("div");
 
-    star.className="star";
+    star.className = "star";
 
-    star.style.left=Math.random()*100+"%";
+    const size = Math.random() * 2 + 1;
 
-    star.style.top=Math.random()*100+"%";
+    star.style.width = size + "px";
+    star.style.height = size + "px";
 
-    const size=Math.random()*2+1;
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
 
-    star.style.width=size+"px";
+    star.style.opacity = Math.random() * 0.5 + 0.15;
 
-    star.style.height=size+"px";
+    star.style.animationDuration = (6 + Math.random() * 10) + "s";
+    star.style.animationDelay = (Math.random() * 10) + "s";
 
-    star.style.animationDuration=(5+Math.random()*10)+"s";
-
-    star.style.animationDelay=(Math.random()*10)+"s";
-
-    star.style.opacity=Math.random()*.7;
-
-    starContainer.appendChild(star);
+    stars.appendChild(star);
 
 }
 
 
-/* -----------------------------
-   LETTER OPENING
-------------------------------*/
+/* --------------------------
+   LETTER
+---------------------------*/
 
-const letter=document.getElementById("letter");
+const letter = document.getElementById("letter");
+const closed = document.querySelector(".closed");
+const seal = document.querySelector(".seal");
+const inside = document.querySelector(".inside");
 
-const closed=document.querySelector(".closed");
+function openLetter() {
 
-const inside=document.querySelector(".inside");
+    letter.style.transform = "scale(1.015)";
 
-const seal=document.querySelector(".seal");
+    setTimeout(() => {
 
-closed.addEventListener("click",openLetter);
+        closed.style.display = "none";
+        seal.style.display = "none";
 
-seal.addEventListener("click",openLetter);
+        inside.style.display = "block";
 
-function openLetter(){
-
-    closed.style.display="none";
-
-    seal.style.display="none";
-
-    inside.style.display="block";
+    }, 350);
 
 }
 
+closed.addEventListener("click", openLetter);
+seal.addEventListener("click", openLetter);
 
-/* -----------------------------
+
+/* --------------------------
    RIDDLE
-------------------------------*/
+---------------------------*/
 
-function checkAnswer(){
+function checkAnswer() {
 
-    let answer=document
+    const answer = document
         .getElementById("answer")
         .value
         .trim()
         .toLowerCase();
 
-    if(
-        answer==="cristal" ||
-        answer==="glass"
-    ){
+    if (answer === "cristal" || answer === "glass") {
 
-        document.getElementById("result").innerHTML=`
+        const result = document.getElementById("result");
 
-            <br>
+        result.style.opacity = "0";
 
-            <a
-            href="https://calendly.com/YOUR-LINK"
-            target="_blank">
+        setTimeout(() => {
 
-            <button>
+            result.innerHTML = `
+                <p style="margin-bottom:25px;color:#d9c08a;">
+                    Ahora sí.
+                </p>
 
-            La respuesta correcta.
+                <a href="https://calendly.com/YOUR-LINK"
+                   target="_blank">
 
-            Haz clic aquí.
+                    <button>
 
-            </button>
+                        Continuar
 
-            </a>
+                    </button>
 
-        `;
+                </a>
+            `;
+
+            result.style.transition = "opacity 1s";
+            result.style.opacity = "1";
+
+        }, 700);
 
     }
 
-    else{
+    else {
 
-        document.getElementById("result").innerHTML=
-
-        "<span style='color:#d8b46a;'>No exactamente.</span>";
+        document.getElementById("result").innerHTML =
+            "<p style='color:#cfa868;'>No exactamente.</p>";
 
     }
 
 }
 
 
-/* -----------------------------
-   PARALLAX IMAGE
-------------------------------*/
+/* --------------------------
+   HERO PARALLAX
+---------------------------*/
 
-const image=document.querySelector(".hero-image");
+const hero = document.querySelector(".hero-image");
 
-window.addEventListener("mousemove",(e)=>{
+window.addEventListener("mousemove", e => {
 
-    const x=(e.clientX/window.innerWidth-.5)*6;
+    const x = (e.clientX / window.innerWidth - 0.5) * 8;
+    const y = (e.clientY / window.innerHeight - 0.5) * 8;
 
-    const y=(e.clientY/window.innerHeight-.5)*6;
-
-    image.style.transform=
-
-    `translate(${x}px,${y}px) scale(1.02)`;
-
-});
-
-
-/* -----------------------------
-   GLOW FOLLOW
-------------------------------*/
-
-const glow=document.createElement("div");
-
-glow.style.position="fixed";
-glow.style.width="500px";
-glow.style.height="500px";
-glow.style.pointerEvents="none";
-glow.style.borderRadius="50%";
-glow.style.background="radial-gradient(circle, rgba(255,255,255,.05), transparent 70%)";
-glow.style.mixBlendMode="screen";
-glow.style.zIndex="-1";
-glow.style.transition="transform .15s linear";
-
-document.body.appendChild(glow);
-
-window.addEventListener("mousemove",(e)=>{
-
-    glow.style.transform=
-    `translate(${e.clientX-250}px,${e.clientY-250}px)`;
+    hero.style.transform =
+        `translate(${x}px, ${y}px) scale(1.05)`;
 
 });

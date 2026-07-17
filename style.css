@@ -65,57 +65,38 @@ scale(1.08);
 
 }
 
-body::before{
+/* ============================= */
+/* STARS */
+/* ============================= */
 
-content:"";
+#stars{
 
 position:fixed;
 
-inset:-20%;
+inset:0;
 
 pointer-events:none;
 
-background:
+overflow:hidden;
 
-conic-gradient(
-
-from 0deg,
-
-transparent,
-
-rgba(255,255,255,.02),
-
-transparent,
-
-rgba(255,240,180,.02),
-
-transparent
-
-);
-
-filter:blur(120px);
-
-animation:rotateLight 40s linear infinite;
-
-z-index:-1;
+z-index:-2;
 
 }
 
-@keyframes rotateLight{
+.star{
 
-from{
+position:absolute;
 
-transform:rotate(0deg);
+width:2px;
+height:2px;
 
-}
+background:white;
 
-to{
+border-radius:50%;
 
-transform:rotate(360deg);
+opacity:.4;
 
-}
-
-}
+animation:twinkle linear infinite;
 
 }
 
@@ -149,118 +130,65 @@ transform:translateY(-60px);
 
 .hero{
 
-position:relative;
-
 height:100vh;
 
 display:flex;
+
+flex-direction:column;
 
 justify-content:center;
 
 align-items:center;
 
-overflow:hidden;
+padding:50px;
 
 }
 
 .hero-image{
 
-width:100%;
+width:min(520px,85vw);
 
-height:100%;
+border-radius:22px;
 
-object-fit:cover;
+border:1px solid rgba(255,255,255,.18);
 
-filter:
+box-shadow:
 
-brightness(.45)
-contrast(1.05)
-saturate(.85);
+0 0 50px rgba(255,255,255,.08),
 
-animation:slowZoom 18s ease forwards;
+0 0 140px rgba(180,40,70,.25);
 
-}
+transition:2s;
 
-@keyframes slowZoom{
-
-from{
-
-transform:scale(1);
+animation:heroFloat 18s ease-in-out infinite;
 
 }
 
-to{
+@keyframes heroFloat{
 
-transform:scale(1.08);
-
-}
-
-}
-
-.hero-overlay{
-
-position:absolute;
-
-inset:0;
-
-background:
-
-linear-gradient(
-to bottom,
-rgba(0,0,0,.35),
-rgba(30,0,8,.15),
-rgba(0,0,0,.82)
-);
-
-backdrop-filter:blur(.5px);
-
-}
-
-.hero-title{
-
-animation:
-
-appear 3s ease;
-
-}
-
-@keyframes appear{
-
-from{
-
-opacity:0;
+50%{
 
 transform:
-
-translateY(25px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:none;
+scale(1.02)
+translateY(-8px);
 
 }
 
 }
 
-.hero-subtitle{
+.scroll{
 
-position:absolute;
+margin-top:45px;
 
-bottom:50px;
+font-size:28px;
 
-font-size:2rem;
+opacity:.45;
 
-opacity:.5;
-
-animation:bounce 2s infinite;
+animation:arrow 2s infinite;
 
 }
 
-@keyframes bounce{
+@keyframes arrow{
 
 50%{
 
@@ -286,21 +214,20 @@ justify-content:center;
 
 .poem{
 
-.poem{
+max-width:1100px;
 
-max-width:1200px;
+font-size:.98rem;
 
-font-size:.95rem;
+line-height:1.55;
 
-line-height:1.65;
+white-space:pre-wrap;
 
-letter-spacing:.4px;
+letter-spacing:.15px;
 
-color:
+text-shadow:
 
-rgba(255,255,255,.92);
+0 0 12px rgba(255,255,255,.04);
 
-}
 }
 
 /* ============================= */
@@ -331,49 +258,13 @@ color:#e8d6af;
 
 }
 
-.playlist-button{
+.spotify iframe{
 
-display:inline-block;
-
-padding:22px 70px;
-
-border:1px solid rgba(214,181,108,.45);
-
-border-radius:999px;
-
-text-decoration:none;
-
-color:white;
-
-font-size:1.3rem;
-
-letter-spacing:5px;
-
-transition:.45s;
-
-background:
-
-rgba(255,255,255,.03);
-
-backdrop-filter:blur(20px);
+border:none;
 
 box-shadow:
 
-0 15px 60px rgba(0,0,0,.45);
-
-}
-
-.playlist-button:hover{
-
-transform:translateY(-6px);
-
-background:#d6b56c;
-
-color:black;
-
-box-shadow:
-
-0 0 60px rgba(214,181,108,.35);
+0 20px 60px rgba(0,0,0,.5);
 
 }
 
@@ -665,42 +556,92 @@ padding:60px 20px;
 
 .letter{
 
-background:
-
-linear-gradient(
-
-145deg,
-
-rgba(255,255,255,.09),
-
-rgba(255,255,255,.03)
-
-);
-
-box-shadow:
-
-0 35px 120px rgba(0,0,0,.55),
-
-0 0 120px rgba(255,255,255,.03);
+padding:35px;
 
 }
 
-.seal{
+}
 
-background:
+/* Cinematic Intro */
 
-radial-gradient(
+body{
+    opacity:0;
+    animation:fadeIn 2s ease forwards;
+}
 
-circle,
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
 
-#b41e3f,
+.hero-image{
+    animation:heroZoom 30s ease forwards;
+}
 
-#73122b
+@keyframes heroZoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.05);
+    }
+}
 
-);
+...
 
-border:
+footer{
 
-2px solid rgba(255,255,255,.12);
+padding:80px;
 
+text-align:center;
+
+opacity:.4;
+
+font-size:22px;
+
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media(max-width:700px){
+
+...
+
+}
+
+/* ============================= */
+/* CINEMATIC INTRO */
+/* ============================= */
+
+body{
+    opacity:0;
+    animation:fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+.hero-image{
+    animation:heroZoom 30s ease forwards;
+}
+
+@keyframes heroZoom{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.05);
+    }
 }
